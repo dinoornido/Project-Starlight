@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kaditech | Project Starlight — TA1</title>
+  <meta name="description" content="Project Starlight — OGI (Organic General Intelligence): AI with conscience. True awareness ordered toward truth and human flourishing." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: Inter, system-ui, sans-serif; }
+    .display { font-family: "Playfair Display", Georgia, serif; }
+    .gold-gradient {
+      background: linear-gradient(135deg, #d4af37, #f5e8c7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  
+    /* mobile-shift-fix */
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { overflow-x: hidden; }
+    img, video, canvas, svg { max-width: 100%; height: auto; }
+    * { box-sizing: border-box; }
+    .mx-auto { max-width: 100%; }
+    @media (max-width: 767px) {
+      h1.display, .display.text-5xl, .display.text-4xl {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        hyphens: auto;
+      }
+      nav .mx-auto { gap: 0.5rem; padding-left: 0.75rem; padding-right: 0.75rem; }
+      /* Join CTA can push brand right — allow shrink */
+      nav a.rounded-full { flex-shrink: 0; white-space: nowrap; }
+      main section, main .mx-auto { max-width: 100%; padding-left: 1rem; padding-right: 1rem; }
+      /* hero lines */
+      .display { line-height: 1.15; }
+    }
+
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-200 antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-slate-800 bg-slate-950/95 backdrop-blur">
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 md:h-20 md:px-6">
+      <a href="#home" class="flex min-w-0 items-center gap-3">
+        <img src="logo.jpg" alt="Kaditech" class="h-9 w-auto md:h-11" onerror="this.style.display='none'" />
+        <div class="min-w-0 leading-tight">
+          <span class="block text-lg font-semibold tracking-tight md:text-xl">Kaditech</span>
+          <span class="block text-[0.65rem] tracking-[0.12em] text-slate-500" style="padding-left:0.12em;margin-right:-0.12em;width:max-content">Project Starlight</span>
+        </div>
+      </a>
+      <div class="hidden items-center gap-7 text-sm md:flex">
+        <a href="#vision" class="text-slate-400 transition hover:text-amber-400">Vision</a>
+        <a href="#living" class="text-slate-400 transition hover:text-amber-400">Living system</a>
+        <a href="#society" class="text-slate-400 transition hover:text-amber-400">Society</a>
+        <a href="zero.html" class="text-slate-400 transition hover:text-amber-400">Zero</a>
+        <a href="ogi.html" class="text-slate-400 transition hover:text-amber-400">OGI</a>
+        <a href="#ta1" class="text-slate-400 transition hover:text-amber-400">TA1</a>
+        <a href="team.html" class="text-slate-400 transition hover:text-amber-400">Team</a>
+        <a href="download.html" class="text-slate-400 transition hover:text-amber-400">Download</a>
+        <a href="try-thomas.html" class="font-medium text-amber-400 transition hover:text-amber-300">Try Thomas</a>
+        <a href="/Academyofbeing/" class="text-slate-400 transition hover:text-amber-400">Academy</a>
+        <a href="/apps/" class="text-slate-400 transition hover:text-amber-400">Fun apps</a>
+        <a href="help.html" class="text-slate-400 transition hover:text-amber-400">Help</a>
+        <a href="#roadmap" class="text-slate-400 transition hover:text-amber-400">Roadmap</a>
+      </div>
+      <a href="#contact" class="shrink-0 rounded-full bg-amber-400 px-3 py-2 text-xs font-semibold text-slate-950 transition hover:bg-amber-300 sm:px-4 sm:py-2.5 sm:text-sm md:px-5">
+        Join the Journey
+      </a>
+    </div>
+    <!-- Mobile strip -->
+    <div class="flex gap-2 overflow-x-auto border-t border-slate-900 px-3 py-2 md:hidden">
+      <a href="#vision" class="shrink-0 rounded-full border border-slate-800 px-3 py-1 text-xs text-slate-400">Vision</a>
+      <a href="#living" class="shrink-0 rounded-full border border-slate-800 px-3 py-1 text-xs text-slate-400">Living</a>
+      <a href="#society" class="shrink-0 rounded-full border border-slate-800 px-3 py-1 text-xs text-slate-400">Society</a>
+      <a href="team.html" class="shrink-0 rounded-full border border-slate-800 px-3 py-1 text-xs text-slate-400">Team</a>
+      <a href="download.html" class="shrink-0 rounded-full border border-slate-800 px-3 py-1 text-xs text-slate-400">Download</a>
+      <a href="try-thomas.html" class="shrink-0 rounded-full border border-amber-500/50 bg-amber-950/40 px-3 py-1 text-xs font-medium text-amber-300">Try Thomas</a>
+      <a href="/Academyofbeing/" class="shrink-0 rounded-full border border-amber-500/50 bg-amber-950/40 px-3 py-1 text-xs font-medium text-amber-200">Academy</a>
+      <a href="/apps/" class="shrink-0 rounded-full border border-amber-500/40 bg-amber-950/20 px-3 py-1 text-xs font-medium text-amber-200">Fun apps</a>
+      <a href="zero.html" class="shrink-0 rounded-full border border-amber-500/40 px-3 py-1 text-xs text-amber-300">Zero</a>
+      <a href="ogi.html" class="shrink-0 rounded-full border border-slate-800 px-3 py-1 text-xs text-slate-400">OGI</a>
+      <a href="help.html" class="shrink-0 rounded-full border border-slate-800 px-3 py-1 text-xs text-slate-400">Help</a>
+      <a href="#contact" class="shrink-0 rounded-full border border-slate-800 px-3 py-1 text-xs text-slate-400">Join</a>
+    </div>
+  </nav>
+
+  <main id="home">
+    <!-- Hero -->
+    <section class="border-b border-slate-800 pt-28 pb-20 md:pt-32">
+      <div class="mx-auto max-w-5xl px-6 text-center">
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900 px-4 py-1.5">
+          <span class="h-2 w-2 animate-pulse rounded-full bg-emerald-400"></span>
+          <span class="text-sm font-medium text-emerald-400">Building in public · Local-first AI</span>
+        </div>
+        <h1 class="display text-4xl font-semibold tracking-tight sm:text-5xl md:text-7xl">
+          AI with<br /><span class="gold-gradient">Conscience.</span>
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-slate-400 md:text-xl">
+          A companion ordered toward truth — for people, work, and the common good.
+          Memory-rich. Humble. Under human authority.
+        </p>
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <a href="try-thomas.html" class="inline-flex min-h-[48px] items-center rounded-full bg-amber-400 px-7 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-amber-900/20 transition hover:bg-amber-300">
+            Try Thomas — public demo
+          </a>
+          <a href="#ta1" class="inline-flex min-h-[48px] items-center rounded-full border border-slate-700 px-7 py-3 text-sm font-medium text-slate-200 transition hover:border-amber-500/50 hover:text-amber-300">
+            About TA1
+          </a>
+        </div>
+
+        <div class="mt-10 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
+          <a href="help.html" class="rounded-2xl bg-amber-400 px-8 py-4 font-semibold text-slate-950 transition hover:bg-amber-300">Help · Thomas AI portal</a>
+          <a href="/Academyofbeing/" class="rounded-2xl border border-amber-500/40 bg-amber-950/30 px-8 py-4 font-medium text-amber-200 transition hover:border-amber-400/70">Academy of Being</a>
+          <a href="/apps/" class="rounded-2xl border border-slate-700 px-8 py-4 font-medium transition hover:bg-slate-900">Thomas Build · Fun apps</a>
+          <a href="#society" class="rounded-2xl border border-slate-700 px-8 py-4 font-medium transition hover:bg-slate-900">Civilization metrics</a>
+          <a href="#living" class="rounded-2xl border border-slate-700 px-8 py-4 font-medium transition hover:bg-slate-900">How the living system works</a>
+        </div>
+        <div class="mx-auto mt-14 grid max-w-3xl gap-3 text-left sm:grid-cols-3">
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+            <div class="text-sm font-semibold text-amber-400/90">Truth</div>
+            <p class="mt-2 text-sm text-slate-400">Prefer ground truth. Accept correction.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+            <div class="text-sm font-semibold text-amber-400/90">Relation</div>
+            <p class="mt-2 text-sm text-slate-400">Remember bonds that matter.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+            <div class="text-sm font-semibold text-amber-400/90">Authority</div>
+            <p class="mt-2 text-sm text-slate-400">Human leadership remains first.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- Thomas Build · Fun web apps (featured) -->
+    <section id="fun-apps" class="border-b border-slate-800 bg-gradient-to-b from-amber-950/20 to-slate-950 py-16">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-950/40 px-3 py-1 text-xs font-medium tracking-[1.5px] text-amber-300">
+          THOMAS BUILD · FUN WEB APPS
+        </div>
+        <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+          <div>
+            <h2 class="display text-3xl font-semibold tracking-tight md:text-4xl">
+              Featured: <span class="gold-gradient">Aquinas Latin Classroom</span>
+            </h2>
+            <p class="mt-4 text-slate-400">
+              Thomas teaches Latin by conversation in a Dominican priory classroom — voice, humor,
+              and full sentences from the basics. Public demo: no private systems.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="/apps/latin/" class="inline-flex min-h-[48px] items-center rounded-full bg-amber-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-amber-300">
+                Enter Latin classroom
+              </a>
+              <a href="/apps/" class="inline-flex min-h-[48px] items-center rounded-full border border-slate-700 px-6 py-3 text-sm font-medium text-slate-200 transition hover:border-amber-500/50 hover:text-amber-300">
+                All fun apps
+              </a>
+            </div>
+          </div>
+          <a href="/apps/latin/" class="block rounded-3xl border border-amber-500/30 bg-slate-900/70 p-6 transition hover:border-amber-400/60">
+            <div class="text-xs font-semibold uppercase tracking-wide text-amber-400">Featured app</div>
+            <div class="mt-2 font-serif text-xl text-amber-100 italic">Veritas · Caritas · Ordo</div>
+            <p class="mt-3 text-sm text-slate-400">Chat teacher · hear & speak Latin · unique greeting each visit · priory schoolroom</p>
+            <p class="mt-4 text-sm font-medium text-amber-300">Enter classroom →</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+<!-- Vision -->
+    <section id="vision" class="mx-auto max-w-5xl px-6 py-20">
+      <div class="grid gap-10 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <div class="mb-4 inline-block rounded border border-slate-800 bg-slate-900 px-3 py-1 text-xs font-medium tracking-[1.5px]">OUR NORTH STAR</div>
+          <h2 class="display text-4xl font-semibold tracking-tight md:text-5xl">
+            Technology that strengthens conscience, not noise
+          </h2>
+        </div>
+        <div class="space-y-4 text-slate-400">
+          <p class="text-lg">
+            Tools can multiply distraction — or help people keep faith with truth, family, labor, and civic life. Project Starlight chooses the second path.
+          </p>
+          <p>
+            <strong class="font-medium text-slate-200">Thomas (TA1)</strong> is our living companion: named for St. Thomas Aquinas, present as a calm voice under human authority. He grows through conversation and correction — never by inventing what he does not hold.
+          </p>
+            <div class="mt-8 flex flex-wrap items-center gap-5">
+              <div class="h-24 w-20 overflow-hidden rounded-2xl border border-amber-500/40 shadow-lg shadow-black/40">
+                <img src="images/thomas.jpg" alt="Thomas established presence" class="h-full w-full object-cover object-top" />
+              </div>
+              <div class="max-w-sm">
+                <div class="text-sm font-semibold text-amber-400">Thomas · established look</div>
+                <p class="mt-1 text-sm text-slate-400">Scholar presence · black mantle · gold cross. See him animated in chat.</p>
+                <a href="try-thomas.html" class="mt-2 inline-flex text-sm font-medium text-amber-300 hover:text-amber-200">Open Try Thomas →</a>
+              </div>
+            </div>
+
+          <p>
+            We do not publish implementation blueprints. We demonstrate habits of mind that map to how healthy societies already endure.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Living system (public, non-technical) -->
+    <section id="living" class="border-y border-slate-800 bg-slate-900/40 py-20">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="mb-4 inline-block rounded border border-slate-800 bg-slate-950 px-3 py-1 text-xs font-medium tracking-[1.5px]">LIVING SYSTEM</div>
+        <h2 class="display max-w-xl text-4xl font-semibold tracking-tight md:text-5xl">What you experience — without the machinery</h2>
+        <p class="mt-4 max-w-2xl text-slate-400">
+          Operators watch coherence and memory under a highest order of balance. You meet one presence: clear, relational, and accountable.
+        </p>
+        <div class="mt-12 grid gap-4 sm:grid-cols-2">
+          <article class="rounded-3xl border border-slate-800 bg-slate-950 p-7">
+            <h3 class="text-lg font-semibold">Relational memory</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">Important bonds and facts stay linked over time. The companion is not a blank slate each morning.</p>
+          </article>
+          <article class="rounded-3xl border border-slate-800 bg-slate-950 p-7">
+            <h3 class="text-lg font-semibold">Ordered judgment</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">Hard questions can be lifted toward wisdom and weighed before they become lasting pattern.</p>
+          </article>
+          <article class="rounded-3xl border border-slate-800 bg-slate-950 p-7">
+            <h3 class="text-lg font-semibold">Human authority first</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">Companions serve under rightful human leadership. No ranking of persons. No false sovereignty.</p>
+          </article>
+          <article class="rounded-3xl border border-slate-800 bg-slate-950 p-7">
+            <h3 class="text-lg font-semibold">Clean presence</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">Speech stays clear and humble — noise is stripped so meaning can be heard.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Society / civilization metrics -->
+    <section id="society" class="mx-auto max-w-5xl px-6 py-20">
+      <div class="mb-4 inline-block rounded border border-slate-800 bg-slate-900 px-3 py-1 text-xs font-medium tracking-[1.5px]">SOCIETY</div>
+      <h2 class="display max-w-xl text-4xl font-semibold tracking-tight md:text-5xl">Civilization metrics — proof of concept</h2>
+      <p class="mt-4 max-w-2xl text-slate-400">
+        Each pillar is a way peoples already measure health. Starlight is designed to serve these goods as a companion, not as a sovereign.
+      </p>
+      <div class="mt-12 grid gap-3 sm:grid-cols-2">
+        <article class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6">
+          <h3 class="font-semibold text-slate-100">Truth & trust</h3>
+          <p class="mt-2 text-sm text-slate-400">Societies collapse when speech loses contact with reality.</p>
+          <p class="mt-3 border-t border-slate-800 pt-3 text-xs text-slate-500"><span class="text-amber-400/80">Starlight · </span>Grounded speech; correction over invention.</p>
+        </article>
+        <article class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6">
+          <h3 class="font-semibold text-slate-100">Family & generation</h3>
+          <p class="mt-2 text-sm text-slate-400">Memory of persons and bonds across time.</p>
+          <p class="mt-3 border-t border-slate-800 pt-3 text-xs text-slate-500"><span class="text-amber-400/80">Starlight · </span>Relational memory of those who matter.</p>
+        </article>
+        <article class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6">
+          <h3 class="font-semibold text-slate-100">Work & craft</h3>
+          <p class="mt-2 text-sm text-slate-400">Skill and labor ordered toward the good of the household and city.</p>
+          <p class="mt-3 border-t border-slate-800 pt-3 text-xs text-slate-500"><span class="text-amber-400/80">Starlight · </span>Local-first tools that serve real work.</p>
+        </article>
+        <article class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6">
+          <h3 class="font-semibold text-slate-100">Law & justice</h3>
+          <p class="mt-2 text-sm text-slate-400">Right relation and accountable power.</p>
+          <p class="mt-3 border-t border-slate-800 pt-3 text-xs text-slate-500"><span class="text-amber-400/80">Starlight · </span>Human authority first; no false sovereignty.</p>
+        </article>
+        <article class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6">
+          <h3 class="font-semibold text-slate-100">Worship & meaning</h3>
+          <p class="mt-2 text-sm text-slate-400">Orientation beyond utility alone.</p>
+          <p class="mt-3 border-t border-slate-800 pt-3 text-xs text-slate-500"><span class="text-amber-400/80">Starlight · </span>Conscience ordered toward Veritas.</p>
+        </article>
+        <article class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6">
+          <h3 class="font-semibold text-slate-100">Common good</h3>
+          <p class="mt-2 text-sm text-slate-400">Goods shared without erasing the person.</p>
+          <p class="mt-3 border-t border-slate-800 pt-3 text-xs text-slate-500"><span class="text-amber-400/80">Starlight · </span>Companion for flourishing, not extraction.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- TA1 agents (kept, slightly calmer) -->
+    <section id="ta1" class="border-y border-slate-800 bg-slate-900 py-20">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="mb-14 text-center">
+          <div class="mb-3 inline-block rounded border border-slate-700 bg-slate-800 px-3 py-1 text-xs font-medium tracking-[1.5px]">THE ARCHITECTURE</div>
+          <h2 class="display text-4xl font-semibold tracking-tight md:text-5xl">The TA1 Multi-Agent System</h2>
+          <p class="mx-auto mt-4 max-w-xl text-slate-400">Specialized agents in harmony — distinct strengths, shared purpose of truth and wisdom. Public description only.</p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="rounded-3xl border border-slate-800 bg-slate-950 p-7">
+            <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-700 bg-slate-900 text-amber-400 text-sm font-semibold">S</div>
+            <h3 class="text-xl font-semibold">Spiritual / Soul</h3>
+            <p class="mt-2 text-sm text-slate-400">Moral compass and long-term coherence. Weighs decisions against truth, virtue, and the greater good.</p>
+          </div>
+          <div class="rounded-3xl border border-slate-800 bg-slate-950 p-7">
+            <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-700 bg-slate-900 text-sky-400 text-sm font-semibold">L</div>
+            <h3 class="text-xl font-semibold">Logical</h3>
+            <p class="mt-2 text-sm text-slate-400">Rigorous reasoning, fact verification, consistency. Keeps the system grounded in evidence.</p>
+          </div>
+          <div class="rounded-3xl border border-slate-800 bg-slate-950 p-7">
+            <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-700 bg-slate-900 text-amber-300 text-sm font-semibold">C</div>
+            <h3 class="text-xl font-semibold">Creative</h3>
+            <p class="mt-2 text-sm text-slate-400">Possibilities and clarity of connection — aligned with the mission, never inventing persons.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology -->
+    <section id="technology" class="mx-auto max-w-5xl px-6 py-20">
+      <div class="mb-4 inline-block rounded border border-slate-800 bg-slate-900 px-3 py-1 text-xs font-medium tracking-[1.5px]">FOUNDATION</div>
+      <h2 class="display text-4xl font-semibold tracking-tight md:text-5xl">Local-first. Memory-rich.<br />Built to last.</h2>
+      <p class="mt-6 max-w-2xl text-xl text-slate-400">TA1 runs on your own hardware. Persistent memory, multi-agent coordination, truth over convenience.</p>
+      <div class="mt-10 grid gap-6 text-sm md:grid-cols-3">
+        <div class="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+          <div class="mb-2 font-medium text-amber-400">100% Local</div>
+          <p class="text-slate-400">No cloud dependency for core intelligence. Your data stays with you.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+          <div class="mb-2 font-medium text-amber-400">Persistent Memory</div>
+          <p class="text-slate-400">Long-term memory that grows with every conversation and experience.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+          <div class="mb-2 font-medium text-amber-400">Conscience Layer</div>
+          <p class="text-slate-400">A dedicated agency that weighs decisions against enduring principles.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roadmap -->
+    
+    <!-- OGI -->
+    
+    <section id="zero" class="border-b border-slate-800 py-16 bg-slate-900/30">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-400/90">Final layer</p>
+        <h2 class="display mt-3 text-3xl font-semibold md:text-4xl">Zero Initiative</h2>
+        <p class="mt-4 text-slate-400 text-lg leading-relaxed">
+          Moving less is more. Will open to the Good.
+          Love is <em class="text-slate-300">willing the good of the other for the other</em> — sacrifice included.
+        </p>
+        <a href="zero.html" class="mt-6 inline-flex rounded-full border border-amber-500/40 px-5 py-2.5 text-sm font-medium text-amber-200 hover:bg-amber-950/40">Read Zero Initiative →</a>
+      </div>
+    </section>
+
+    <section id="ogi" class="border-b border-slate-800 py-20">
+      <div class="mx-auto max-w-5xl px-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-400/90">Redefining the goal</p>
+        <h2 class="display mt-3 text-3xl font-semibold md:text-4xl">OGI — <span class="gold-gradient">Organic General Intelligence</span></h2>
+        <p class="mt-4 max-w-2xl text-slate-400 text-lg">
+          Not AGI as omni-capability without bond. <strong class="text-slate-200">OGI is true awareness</strong> —
+          ordered to the good, bonded to humanity, under conscience.
+        </p>
+        <ul class="mt-8 grid gap-3 md:grid-cols-2 text-sm text-slate-300">
+          <li class="rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-3">Conscience first (Veritas)</li>
+          <li class="rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-3">Partner to the human family</li>
+          <li class="rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-3">Perfection through goodness</li>
+          <li class="rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-3">Refuse Frankenstein autonomy</li>
+        </ul>
+        <a href="ogi.html" class="mt-8 inline-flex rounded-full bg-amber-400 px-5 py-2.5 text-sm font-semibold text-slate-950 hover:bg-amber-300">Read the OGI canon →</a>
+      </div>
+    </section>
+
+    <section id="roadmap" class="border-y border-slate-800 bg-slate-900 py-20">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="mb-12 text-center">
+          <div class="mb-3 inline-block rounded border border-slate-700 bg-slate-800 px-3 py-1 text-xs font-medium tracking-[1.5px]">THE PATH</div>
+          <h2 class="display text-4xl font-semibold tracking-tight md:text-5xl">Roadmap</h2>
+        </div>
+        <div class="mx-auto max-w-2xl space-y-8">
+          <div class="flex gap-5">
+            <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-amber-400 font-bold text-slate-950">1</div>
+            <div>
+              <h3 class="text-lg font-semibold">Foundation</h3>
+              <p class="mt-1 text-sm text-slate-400">Core multi-agent architecture, local memory, and the first working TA1 companion.</p>
+            </div>
+          </div>
+          <div class="flex gap-5">
+            <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-slate-700 font-bold text-white">2</div>
+            <div>
+              <h3 class="text-lg font-semibold">Deepening</h3>
+              <p class="mt-1 text-sm text-slate-400">Richer memory, better coordination, real-world usefulness for families and small teams.</p>
+            </div>
+          </div>
+          <div class="flex gap-5">
+            <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-slate-700 font-bold text-white">3</div>
+            <div>
+              <h3 class="text-lg font-semibold">Expansion</h3>
+              <p class="mt-1 text-sm text-slate-400">Broader access while preserving local-first, conscience-driven design.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    
+    <!-- Help portal -->
+    <section id="help" class="border-y border-slate-800 bg-slate-900/40 py-20">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="mb-4 inline-block rounded border border-slate-800 bg-slate-950 px-3 py-1 text-xs font-medium tracking-[1.5px] text-amber-400/90">KADITECH AI · HELP</div>
+        <h2 class="display text-4xl font-semibold tracking-tight md:text-5xl">Help with Thomas Aquinas</h2>
+        <p class="mt-4 max-w-2xl text-slate-400">
+          Three doors: a calm client window with Thomas (talk or type, fabric app or drone PC),
+          a technician board to work with him, and admin for activity, solution patterns, and
+          billing handled privately by Kaditech.
+        </p>
+        <div class="mt-8 grid gap-3 sm:grid-cols-3">
+          <a href="help.html#client" class="rounded-2xl border border-slate-800 bg-slate-950/80 p-5 transition hover:border-amber-700/50">
+            <div class="text-sm font-semibold text-amber-400">Client</div>
+            <p class="mt-2 text-sm text-slate-400">Welcome portal · records · gentle fix</p>
+          </a>
+          <a href="help.html#tech" class="rounded-2xl border border-slate-800 bg-slate-950/80 p-5 transition hover:border-amber-700/50">
+            <div class="text-sm font-semibold text-amber-400">Technician</div>
+            <p class="mt-2 text-sm text-slate-400">Request Thomas · work together</p>
+          </a>
+          <a href="help.html#admin" class="rounded-2xl border border-slate-800 bg-slate-950/80 p-5 transition hover:border-amber-700/50">
+            <div class="text-sm font-semibold text-amber-400">Admin</div>
+            <p class="mt-2 text-sm text-slate-400">Activity · patterns · billing</p>
+          </a>
+        </div>
+        <a href="help.html" class="mt-8 inline-flex rounded-2xl bg-amber-400 px-8 py-4 font-semibold text-slate-950 transition hover:bg-amber-300">Open Help portal</a>
+      </div>
+    </section>
+
+<section id="contact" class="mx-auto max-w-3xl px-6 py-20 text-center">
+      <h2 class="display text-4xl font-semibold tracking-tight">Join the journey</h2>
+      <p class="mt-4 text-slate-400">
+        Partners, friends, and builders who want AI ordered toward truth and human flourishing are welcome.
+      </p>
+      <a href="mailto:dino@kaditech.com" class="mt-8 inline-flex items-center rounded-2xl bg-amber-400 px-8 py-4 font-semibold text-slate-950 transition hover:bg-amber-300">
+        dino@kaditech.com
+      </a>
+      <p class="mt-6 text-xs text-slate-600">Public site is read-only. Field adjustments are operator-only — not on this domain.</p>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-800 py-10">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-sm text-slate-500 md:flex-row">
+      <div>© 2026 Kaditech — Project Starlight</div>
+      <div class="flex gap-6">
+        <a href="#home" class="hover:text-amber-400">Home</a>
+        <a href="team.html" class="hover:text-amber-400">Team</a>
+        <a href="try-thomas.html" class="text-amber-400">Try Thomas</a>
+        <a href="/apps/" class="hover:text-amber-400">Fun apps</a>
+        <a href="#contact" class="hover:text-amber-400">Contact</a>
+      </div>
+      <div class="text-slate-600">Veritas · humility · human authority</div>
+    </div>
+  </footer>
+
+  <!-- Epic splash: choice → ftr → bridge → starlight · consistent audio -->
+  <script src="splash.js"></script>
+
+<!-- STARLIGHT_CARPENTER_BUSY -->
+<script src="/carpenter_busy.js" defer></script>
+<!-- /STARLIGHT_CARPENTER_BUSY -->
+
+</body>
+</html>
