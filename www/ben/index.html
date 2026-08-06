@@ -2,217 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <meta http-equiv="Cache-Control" content="no-store" />
-  <title>Staff desk</title>
+  <title>Betty · staff desk</title>
   <style>
-    :root {
-      --bg: #0b0c10;
-      --card: #14161c;
-      --gold: #c9a227;
-      --gold2: #e8c872;
-      --ink: #f4efe6;
-      --muted: #a8a29e;
-      --line: rgba(184,149,74,.4);
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; min-height: 100dvh;
-      font-family: system-ui, -apple-system, Segoe UI, sans-serif;
-      background: radial-gradient(ellipse at top, #1a1510 0%, var(--bg) 55%);
-      color: var(--ink);
-      display: flex; flex-direction: column;
-    }
-    header {
-      padding: 14px 16px 8px;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    header h1 {
-      margin: 0; font-size: 1.05rem; font-weight: 700; color: var(--gold2);
-    }
-    header p { margin: 4px 0 0; font-size: .8rem; color: var(--muted); }
-    .wrap {
-      flex: 1; display: flex; flex-direction: column;
-      max-width: 480px; width: 100%; margin: 0 auto; padding: 12px 12px 20px;
-      min-height: 0;
-    }
-    .actions {
-      display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 12px;
-    }
-    a.btn, button.btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      font: 700 13px system-ui, sans-serif;
-      padding: 12px 16px; border-radius: 999px;
-      text-decoration: none; cursor: pointer; border: 2px solid var(--gold2);
-    }
-    a.btn.primary, button.btn.primary {
-      background: var(--gold); color: #0b1220;
-    }
-    a.btn.ghost, button.btn.ghost {
-      background: transparent; color: var(--gold2); border-color: var(--line);
-    }
-    .log {
-      flex: 1; min-height: 220px; max-height: min(52dvh, 420px);
-      overflow-y: auto; padding: 10px;
-      border: 1px solid var(--line); border-radius: 14px;
-      background: var(--card);
-      display: flex; flex-direction: column; gap: 8px;
-    }
-    .bubble {
-      max-width: 92%; padding: 9px 11px; border-radius: 12px;
-      font-size: .88rem; line-height: 1.45; white-space: pre-wrap; word-break: break-word;
-    }
-    .bubble.betty {
-      align-self: flex-start; background: #1c1612;
-      border: 1px solid var(--line); color: var(--ink);
-    }
-    .bubble.you {
-      align-self: flex-end; background: #1e293b;
-      border: 1px solid #334155; color: #e2e8f0;
-    }
-    .bubble .who {
-      font-size: .65rem; font-weight: 700; letter-spacing: .06em;
-      text-transform: uppercase; opacity: .7; margin-bottom: 4px;
-    }
-    form.compose {
-      display: flex; gap: 8px; margin-top: 10px;
-    }
-    form.compose input {
-      flex: 1; min-width: 0; border-radius: 999px;
-      border: 1px solid #334155; background: #0b1220; color: #e2e8f0;
-      padding: 12px 14px; font: 15px system-ui, sans-serif;
-    }
-    form.compose button {
-      border-radius: 999px; border: none; background: var(--gold); color: #0b1220;
-      font: 700 14px system-ui, sans-serif; padding: 0 16px; cursor: pointer;
-    }
-    footer {
-      margin-top: 12px; font-size: .72rem; color: var(--muted); text-align: center;
-    }
-    footer a { color: var(--gold2); }
-    .note {
-      font-size: .78rem; color: var(--muted); margin: 0 0 8px; line-height: 1.4;
-    }
+    body{margin:0;font-family:system-ui,sans-serif;background:#0b0c10;color:#f4efe6;
+      max-width:480px;margin:0 auto;padding:16px;line-height:1.45}
+    h1{color:#e8c872;font-size:1.15rem;margin:0 0 6px}
+    .muted{color:#a8a29e;font-size:.85rem}
+    a.btn{display:inline-block;margin:6px 8px 6px 0;padding:12px 16px;border-radius:999px;
+      font-weight:800;text-decoration:none;font-size:14px}
+    a.primary{background:#c9a227;color:#0b1220;border:2px solid #e8c872}
+    a.ghost{border:1px solid rgba(184,149,74,.5);color:#e8c872}
+    .box{margin-top:14px;padding:12px;border:1px solid rgba(184,149,74,.4);
+      border-radius:14px;background:#14161c;font-size:.9rem}
+    ol{padding-left:1.2rem}
   </style>
 </head>
 <body>
-  <header>
-    <h1>Betty · staff desk</h1>
-    <p>Quiet link for Ben · no popups · Firefox-friendly</p>
-  </header>
-  <div class="wrap">
-    <p class="note">
-      Use the gold button for Fabric Windows. If your browser blocks the site download, use Alt (CDN).
-      Do not use the Node USB Kit on a normal PC.
-    </p>
-    <div class="actions">
-      <a class="btn primary" id="dl-main"
-         href="/downloads/Fabric-Client-Windows.zip"
-         download="Fabric-Client-Windows.zip">Download Fabric Windows</a>
-      <a class="btn ghost" id="dl-cdn"
-         href="https://cdn.jsdelivr.net/gh/dinoornido/Project-Starlight@master/www/downloads/Fabric-Client-Windows.zip"
-         target="_blank" rel="noopener noreferrer">Alt download (CDN)</a>
-      <a class="btn ghost" href="/stargate/" rel="noopener">Open StarGate</a>
-    </div>
-    <div class="log" id="log" role="log" aria-live="polite"></div>
-    <form class="compose" id="form" autocomplete="off">
-      <input id="input" type="text" placeholder="Message Betty…" enterkeyhint="send" />
-      <button type="submit">Send</button>
-    </form>
-    <footer>
-      Kaditech · Project Starlight · not indexed<br />
-      <a href="/downloads/">All downloads</a>
-      · Warriors for life
-    </footer>
+  <h1>Betty · staff desk (Ben)</h1>
+  <p class="muted">Firefox-friendly · no popups · fixed links</p>
+
+  <p>
+    <a class="btn primary"
+       href="https://cdn.jsdelivr.net/gh/dinoornido/Project-Starlight@master/www/downloads/Fabric-Client-Windows.zip">
+      Download Fabric Windows
+    </a>
+    <a class="btn ghost"
+       href="https://raw.githubusercontent.com/dinoornido/Project-Starlight/master/www/downloads/Fabric-Client-Windows.zip">
+      Alt download
+    </a>
+    <a class="btn ghost" href="https://kaditech.com/stargate/">Open StarGate</a>
+  </p>
+
+  <div class="box">
+    <strong>Install steps</strong>
+    <ol>
+      <li>Download Fabric Windows (gold button)</li>
+      <li>Delete old unzip folders (skip Node USB Kit)</li>
+      <li>Unzip → run <code>Run-Client.cmd</code></li>
+      <li>Click Yes on consent</li>
+    </ol>
+    <p class="muted">If Firefox blocks the file, use Alt download or allow the download.</p>
   </div>
+
+  <div class="box" id="chat">
+    <strong>Betty</strong>
+    <p id="hello">Hey Ben — this page is the working desk. Use the gold download. Chat is optional below.</p>
+    <form id="f" style="display:flex;gap:8px;margin-top:8px">
+      <input id="i" style="flex:1;padding:10px;border-radius:999px;border:1px solid #334155;background:#0b1220;color:#eee" placeholder="Message Betty…" />
+      <button style="padding:10px 14px;border-radius:999px;border:0;background:#c9a227;font-weight:800">Send</button>
+    </form>
+    <div id="log" style="margin-top:10px;font-size:.85rem"></div>
+  </div>
+
   <script>
-(function () {
-  var KEY = "kaditech.ben.betty.v1";
-  var mem = [];
-  var FAB = "/downloads/Fabric-Client-Windows.zip";
-  var CDN = "https://cdn.jsdelivr.net/gh/dinoornido/Project-Starlight@master/www/downloads/Fabric-Client-Windows.zip";
-
-  function load() {
-    try {
-      var r = localStorage.getItem(KEY);
-      if (r) {
-        var j = JSON.parse(r);
-        if (Array.isArray(j) && j.length) return j;
-      }
-    } catch (e) {}
-    return mem.slice();
-  }
-  function save(list) {
-    mem = list.slice(-50);
-    try { localStorage.setItem(KEY, JSON.stringify(mem)); } catch (e) {}
-  }
-
-  function reply(text) {
-    var l = (text || "").toLowerCase();
-    if (!l.trim()) return "I'm Betty. Ask about Fabric or StarGate.";
-    if (/fabric|windows|install|download|powershell|terminator|wireguard|zip/.test(l)) {
-      return "Fabric Windows steps:\n1) Gold Download Fabric Windows (or Alt CDN)\n2) Delete old unzip folders\n3) Unzip → Run-Client.cmd\n4) Yes on consent\n\nNot the USB Kit. StarGate: /stargate/ after install.";
-    }
-    if (/firefox|block|paranoid|security|download/.test(l)) {
-      return "Firefox is fine. No popups here. If kaditech.com zip is blocked, use Alt download (CDN). Allow the download when Firefox asks.";
-    }
-    if (/^(hi|hello|hey)\b/.test(l)) {
-      return "Hey Ben — Betty. Quiet staff desk. Fabric button is above. What do you need?";
-    }
-    if (/password|login|credential/.test(l)) {
-      return "I never collect passwords on this page. Use your normal staff StarGate login only.";
-    }
-    if (/thomas|stargate|betty/.test(l)) {
-      return "Thomas is StarGate chat. This page is only me (Betty) + Fabric download. Open StarGate when you want Thomas.";
-    }
-    return "Got it. Reply with what failed (error text if any) and Windows or Linux.";
-  }
-
-  function render(list) {
-    var log = document.getElementById("log");
-    log.innerHTML = "";
-    list.forEach(function (m) {
-      var d = document.createElement("div");
-      d.className = "bubble " + (m.role === "you" ? "you" : "betty");
-      var w = document.createElement("div");
-      w.className = "who";
-      w.textContent = m.role === "you" ? "You" : "Betty";
-      var b = document.createElement("div");
-      b.textContent = m.text;
-      d.appendChild(w);
-      d.appendChild(b);
-      log.appendChild(d);
-    });
-    log.scrollTop = log.scrollHeight;
-  }
-
-  var list = load();
-  if (!list.length) {
-    list = [{
-      role: "betty",
-      text: "Quiet staff desk for Ben.\n• Gold button = Fabric Windows (fixed)\n• Alt CDN if Firefox blocks site zip\n• Chat with me here — no popups"
-    }];
-    save(list);
-  }
-  render(list);
-
-  document.getElementById("form").addEventListener("submit", function (e) {
+  document.getElementById('f').onsubmit = function(e) {
     e.preventDefault();
-    var inp = document.getElementById("input");
-    var v = (inp.value || "").trim();
+    var v = document.getElementById('i').value.trim();
     if (!v) return;
-    inp.value = "";
-    list.push({ role: "you", text: v });
-    list.push({ role: "betty", text: reply(v) });
-    save(list);
-    render(list);
-  });
-
-  // Prefer same-origin; keep CDN as fallback (already in HTML)
-  document.getElementById("dl-main").setAttribute("href", FAB);
-  document.getElementById("dl-cdn").setAttribute("href", CDN);
-})();
+    document.getElementById('i').value = '';
+    var log = document.getElementById('log');
+    log.innerHTML += '<p><b>You:</b> ' + v.replace(/</g,'<') + '</p>';
+    var r = /fabric|download|windows|install|zip|error|404|broken/i.test(v)
+      ? 'Use the gold Download Fabric Windows button on this page (or Alt download). Unzip → Run-Client.cmd → Yes. Not the USB kit.'
+      : 'Got it. Tell me what failed (exact error text) if install still breaks.';
+    log.innerHTML += '<p><b>Betty:</b> ' + r + '</p>';
+  };
   </script>
 </body>
 </html>
