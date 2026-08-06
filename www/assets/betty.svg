@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" width="200" height="220">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#141a22"/>
+      <stop offset="100%" stop-color="#0b0e13"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="220" rx="24" fill="url(#bg)"/>
+  <rect x="8" y="8" width="184" height="204" rx="20" fill="none" stroke="#7dcfff" stroke-opacity="0.45" stroke-width="2"/>
+  <ellipse cx="100" cy="210" rx="70" ry="36" fill="#c9a227"/>
+  <rect x="88" y="148" width="24" height="28" fill="#e8c4a8"/>
+  <circle cx="100" cy="100" r="52" fill="#e8c4a8"/>
+  <path d="M48,100 Q50,42 100,38 Q150,42 152,100 Q140,55 100,52 Q60,55 48,100Z" fill="#4a3728"/>
+  <path d="M62,80 Q78,70 94,76" fill="none" stroke="#4a3728" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M106,76 Q122,70 138,80" fill="none" stroke="#4a3728" stroke-width="3.2" stroke-linecap="round"/>
+  <circle cx="80" cy="100" r="6.2" fill="#1a1408"/>
+  <circle cx="120" cy="100" r="6.2" fill="#1a1408"/>
+  <circle cx="78.45" cy="98.45" r="1.736" fill="#fff" opacity="0.85"/>
+  <circle cx="118.45" cy="98.45" r="1.736" fill="#fff" opacity="0.85"/>
+  <path d="M100,108 L96,120 Q100,124 104,120 Z" fill="#e8c4a8" stroke="#1a1408" stroke-opacity="0.15" stroke-width="1"/>
+  <path d="M80,134 L120,134" fill="none" stroke="#1a1408" stroke-width="3" stroke-linecap="round"/>
+  <rect x="20" y="178" width="160" height="28" rx="10" fill="#0b0e13" stroke="#7dcfff" stroke-opacity="0.6"/>
+  <text x="100" y="196" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="#7dcfff">Listening</text>
+  <rect x="20" y="14" width="160" height="18" rx="9" fill="hsl(19, 42%, 48%)" fill-opacity="0.25" stroke="hsl(19, 42%, 48%)" stroke-opacity="0.5"/>
+  <text x="100" y="26" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="9" fill="#e8eef6">Betty · with the team</text>
+</svg>
