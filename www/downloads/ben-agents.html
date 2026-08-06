@@ -16,62 +16,108 @@
     .tabs button.on-b { background:#c9a227; color:#0b1220; border-color:#c9a227; }
     .tabs button.on-g { background:#0369a1; color:#fff; border-color:#0369a1; }
     .gold { display:inline-flex; border-radius:999px; border:2px solid #e8c872; background:#c9a227; color:#0b1220; font:800 13px system-ui; padding:.65rem 1rem; text-decoration:none; }
-    .log { flex:1; overflow:auto; border:1px solid rgba(255,255,255,.1); border-radius:12px; background:#12141c; padding:.75rem; margin-top:.75rem; min-height: 50vh; }
+    .issue-btn {
+      display:inline-flex; align-items:center; justify-content:center; gap:.4rem;
+      width:100%; margin-top:.65rem; min-height:48px; border:0; border-radius:12px;
+      background:#b91c1c; color:#fff; font:800 14px system-ui; cursor:pointer;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.08);
+    }
+    .issue-btn:active { transform: scale(.99); }
+    .issue-panel {
+      display:none; margin-top:.55rem; padding:.75rem; border-radius:12px;
+      border:1px solid rgba(248,113,113,.45); background:#1a1010;
+    }
+    .issue-panel.open { display:block; }
+    .issue-panel label { display:block; font-size:11px; color:#fca5a5; margin-bottom:.35rem; font-weight:700; }
+    .issue-panel textarea {
+      width:100%; min-height:88px; box-sizing:border-box; border-radius:10px;
+      border:1px solid rgba(255,255,255,.15); background:#0b0c10; color:#f4efe6;
+      padding:.55rem .65rem; font:14px system-ui; resize:vertical;
+    }
+    .issue-panel .row { display:flex; gap:.5rem; margin-top:.5rem; flex-wrap:wrap; }
+    .issue-panel button.send {
+      flex:1; min-height:42px; border:0; border-radius:10px; background:#e8c872; color:#0b1220; font-weight:800; cursor:pointer;
+    }
+    .issue-panel button.cancel {
+      min-height:42px; border-radius:10px; border:1px solid rgba(255,255,255,.2); background:transparent; color:#e4d2a0; padding:0 .9rem; cursor:pointer;
+    }
+    .log { flex:1; overflow:auto; border:1px solid rgba(255,255,255,.1); border-radius:12px; background:#12141c; padding:.75rem; margin-top:.75rem; min-height: 42vh; }
     .b { border-radius:12px; padding:.55rem .7rem; margin:.4rem 0; font-size:14px; white-space:pre-wrap; line-height:1.4; }
     .you { margin-left:1.5rem; background:#1e2433; }
     .agent-b { margin-right:1.5rem; background:#1c1612; border:1px solid rgba(180,120,40,.35); }
     .agent-g { margin-right:1.5rem; background:#0f1720; border:1px solid rgba(40,120,180,.35); }
     .who { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#a8a29e; margin-bottom:4px; }
-    form { display:flex; gap:.5rem; margin-top:.75rem; }
-    input { flex:1; min-height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#12141c; color:#f4efe6; padding:0 .75rem; }
-    form button { border:0; border-radius:12px; background:#c9a227; color:#0b1220; font-weight:800; padding:0 1rem; cursor:pointer; }
+    form.compose { display:flex; gap:.5rem; margin-top:.75rem; }
+    form.compose input { flex:1; min-height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#12141c; color:#f4efe6; padding:0 .75rem; }
+    form.compose button { border:0; border-radius:12px; background:#c9a227; color:#0b1220; font-weight:800; padding:0 1rem; cursor:pointer; }
+    .okline { font-size:11px; color:#86efac; margin-top:.4rem; }
   </style>
 </head>
 <body>
   <div class="wrap">
     <h1>Ben · Betty + Gus</h1>
-    <p class="sub">Staff agents · no popups · Firefox-friendly</p>
+    <p class="sub">Staff desk · Betty OK · one-way issue button · Firefox-friendly</p>
     <div class="tabs">
       <button type="button" id="tabB" class="on-b">Betty · office</button>
       <button type="button" id="tabG">Gus · projects</button>
       <a href="https://kaditech.com/stargate/">StarGate</a>
       <a href="https://kaditech.com/help">Help login</a>
     </div>
-    <a class="gold" href="https://cdn.jsdelivr.net/gh/dinoornido/Project-Starlight@master/www/downloads/Fabric-Client-Windows.zip">Download Fabric Windows</a>
+    <a class="gold" href="https://cdn.jsdelivr.net/gh/dinoornido/Project-Starlight@master/www/downloads/Fabric-Client-Windows.zip">Download Fabric Windows v1.5</a>
+
+    <button type="button" class="issue-btn" id="issueOpen" aria-label="Report an issue to Betty">I have an issue — tell Betty</button>
+    <div class="issue-panel" id="issuePanel" aria-live="polite">
+      <label for="issueText">One-way to Betty (she replies here). If her answer is confusing, R2 checks for her.</label>
+      <textarea id="issueText" placeholder="What happened? e.g. PowerShell keeps flashing after Fabric…"></textarea>
+      <div class="row">
+        <button type="button" class="send" id="issueSend">Send to Betty</button>
+        <button type="button" class="cancel" id="issueCancel">Cancel</button>
+      </div>
+      <p class="okline" id="issueStatus"></p>
+    </div>
+
     <div class="log" id="log" role="log"></div>
-    <form id="f">
+    <form class="compose" id="f">
       <input id="inp" placeholder="Message Betty…" autocomplete="off" />
       <button type="submit">Send</button>
     </form>
   </div>
   <script>
     var mode = "betty";
-    var KB = "kaditech.ben.agents.betty.v1";
+    var KB = "kaditech.ben.agents.betty.v3";
     var KG = "kaditech.ben.agents.gus.v1";
+    var ISSUE_KEY = "kaditech.ben.issues.v1";
+
     function load(k){ try{ var j=JSON.parse(localStorage.getItem(k)||"[]"); return Array.isArray(j)?j:[]; }catch(e){return[];} }
-    function save(k,list){ try{ localStorage.setItem(k, JSON.stringify(list.slice(-60))); }catch(e){} }
-    function betty(t){
+    function save(k,list){ try{ localStorage.setItem(k, JSON.stringify(list.slice(-80))); }catch(e){} }
+
+    function bettyLocal(t){
       var l=t.toLowerCase();
-      if(/^(hi|hello|hey)\b/.test(l)) return "Hey Ben — Betty. Office line. Gus tab for projects. What do you need?";
-      if(/powershell|popup|pop up|flash|closing|instant/.test(l) && /window|powershell|fabric|keep/.test(l)) return "Not a failed install — Fabric heartbeat was flashing PowerShell. Fix: download Fabric v1.5 → run Fix-Silent-Heartbeat.cmd once (hidden VBS, no popups). Optional: disable task KaditechFabricHeartbeat.";\n      if(/fabric|wireguard|vpn|install/.test(l) && !/popup|flash|closing/.test(l)) return "Fabric: gold download → unzip → Run-Client.cmd with VPN on. If PowerShell windows flash after install, run Fix-Silent-Heartbeat.cmd from the same zip. Log: %ProgramData%\\Kaditech\\FabricClient\\client.log";
-      if(/thomas|stargate|loop|betty betty/.test(l)) return "Thomas is StarGate conscience chat. This desk is Betty/Gus only. If Thomas loops, Stop → New conversation, then message me here.";
-      if(/ticket|katharine|email/.test(l)) return "I can track outcomes for Katharine. Summarize client · problem · time · result.";
-      if(/gus|project/.test(l)) return "Switch to Gus tab for project tracking — he reports to me.";
-      return "Got it: \""+t.slice(0,160)+(t.length>160?"…":"")+"\". Short next step?";
+      if(/powershell|popup|pop up|flash|closing|instant/.test(l) && /window|powershell|fabric|keep|pop/.test(l))
+        return "Not a failed install — Fabric heartbeat was flashing PowerShell.\\nFix: Fabric v1.5 zip → Fix-Silent-Heartbeat.cmd once (hidden VBS).\\nWireGuard is separate — keep VPN on for office. Use the red button anytime to flag me.";
+      if(/wireguard|vpn|tunnel/.test(l))
+        return "WireGuard = office VPN (not the popup fix). Keep tunnel ON for Fabric/SysAide. If VPN rejects, paste the error via the red issue button.";
+      if(/^(hi|hello|hey)\\b/.test(l))
+        return "Hey Ben — Betty OK. Red button = one-way issue to me; I reply here. R2 checks if I am confusing. What's first?";
+      if(/fabric|install/.test(l) && !/popup|flash|closing/.test(l))
+        return "Fabric: gold download v1.5 → Run-Client.cmd with VPN on. If PowerShell flashes, Fix-Silent-Heartbeat.cmd — not a full reinstall.";
+      if(/password|credential/.test(l)) return "I never collect passwords here.";
+      return "Got it: \\""+t.slice(0,160)+(t.length>160?"…":"")+"\\". Use the red button for issues so I log them. Next step?";
     }
-    function gus(t){
+    function gusLocal(t){
       var l=t.toLowerCase();
-      if(/^(hi|hello|hey)\b/.test(l)) return "Hey Ben — Gus. Projects & integrations. Name the client + blocker.";
-      if(/fabric|vpn|wireguard|sysaide/.test(l)) return "Connectivity is Betty's ops lane; I stay on project checklist. If VPN is green, re-run Fabric and paste last log lines here.";
-      if(/project|client|deadline|integration|arise|arinna/.test(l)) return "Project mode on. Send: client · goal · blocker. I'll step it.";
-      if(/password|credential/.test(l)) return "No passwords in chat. Say which system — not the secret.";
-      return "Noted. Want debug, checklist, or escalate to Betty?";
+      if(/^(hi|hello|hey)\\b/.test(l)) return "Gus — project lane. Name client + blocker.";
+      if(/issue|problem|broken/.test(l)) return "For ops issues use Betty (red button). I stay on your project checklist.";
+      return "Noted. Want checklist, debug, or escalate to Betty?";
     }
+
     function render(){
       var key = mode==="gus"?KG:KB;
       var list = load(key);
       if(!list.length){
-        list = [{role:"agent", text: mode==="gus" ? "Gus online — project lane." : "Betty-led week (R2 leading through Aug 13). Ops here first: intake→triage→execute→verify→report. Gus = projects. Thomas only if servers down."}];
+        list = [{role:"agent", text: mode==="gus"
+          ? "Gus online — projects."
+          : "Betty OK.\\n• Red button = report an issue (one-way; I reply)\\n• If I am confusing, R2 reviews on my behalf\\n• Gold = Fabric v1.5 · Fix-Silent-Heartbeat.cmd for popups"}];
         save(key, list);
       }
       var log = document.getElementById("log");
@@ -88,8 +134,87 @@
       document.getElementById("tabB").className = mode==="betty"?"on-b":"";
       document.getElementById("tabG").className = mode==="gus"?"on-g":"";
     }
+
+    function pushBetty(userText, agentText){
+      mode = "betty";
+      var list = load(KB);
+      if(userText) list.push({role:"you", text:userText});
+      list.push({role:"agent", text:agentText});
+      save(KB, list);
+      render();
+    }
+
+    async function sendIssue(text){
+      var endpoints = [
+        "https://kaditech.com/fabric/v1/betty/issue",
+        "https://www.kaditech.com/fabric/v1/betty/issue",
+        "https://kaditech.com/betty/issue",
+        "http://10.8.0.1:3055/fabric/v1/betty/issue",
+        "http://192.168.1.198:3055/fabric/v1/betty/issue"
+      ];
+      var body = JSON.stringify({ staff: "ben", text: text, kind: "button", source: "ben-agents" });
+      var lastErr = null;
+      for (var i=0;i<endpoints.length;i++){
+        try {
+          var r = await fetch(endpoints[i], {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: body,
+            mode: "cors"
+          });
+          if (r.ok) {
+            var j = await r.json();
+            return j;
+          }
+          lastErr = "HTTP "+r.status;
+        } catch (e) {
+          lastErr = String(e && e.message || e);
+        }
+      }
+      // offline fallback — Betty still answers locally; queue for later
+      var q = load(ISSUE_KEY);
+      q.push({ ts: Date.now(), text: text, pending: true });
+      save(ISSUE_KEY, q);
+      return {
+        ok: true,
+        offline: true,
+        id: "LOCAL-"+Date.now(),
+        reply: bettyLocal(text) + "\\n\\n(Logged on this device — server not reached: "+(lastErr||"offline")+". R2 can still review when you are on VPN.)",
+        needs_r2: true
+      };
+    }
+
     document.getElementById("tabB").onclick=function(){ mode="betty"; render(); };
     document.getElementById("tabG").onclick=function(){ mode="gus"; render(); };
+    document.getElementById("issueOpen").onclick=function(){
+      document.getElementById("issuePanel").classList.add("open");
+      document.getElementById("issueText").focus();
+    };
+    document.getElementById("issueCancel").onclick=function(){
+      document.getElementById("issuePanel").classList.remove("open");
+      document.getElementById("issueStatus").textContent = "";
+    };
+    document.getElementById("issueSend").onclick=async function(){
+      var text = (document.getElementById("issueText").value || "").trim();
+      if(!text){ document.getElementById("issueStatus").textContent = "Type what happened first."; return; }
+      document.getElementById("issueStatus").textContent = "Sending to Betty…";
+      document.getElementById("issueSend").disabled = true;
+      try {
+        var res = await sendIssue(text);
+        var reply = (res && res.reply) || bettyLocal(text);
+        if (res && res.id) reply = reply + "\\n\\nTicket: " + res.id;
+        if (res && res.needs_r2) reply = reply + "\\nR2 will check this on Betty's behalf.";
+        pushBetty("[ISSUE] " + text, reply);
+        document.getElementById("issueText").value = "";
+        document.getElementById("issuePanel").classList.remove("open");
+        document.getElementById("issueStatus").textContent = "Sent.";
+      } catch (e) {
+        document.getElementById("issueStatus").textContent = "Failed — try again or use chat.";
+        pushBetty("[ISSUE] " + text, bettyLocal(text) + "\\n(Send failed; local note kept.)");
+      }
+      document.getElementById("issueSend").disabled = false;
+    };
+
     document.getElementById("f").onsubmit=function(e){
       e.preventDefault();
       var v=document.getElementById("inp").value.trim();
@@ -98,7 +223,7 @@
       var key=mode==="gus"?KG:KB;
       var list=load(key);
       list.push({role:"you", text:v});
-      list.push({role:"agent", text: mode==="gus"?gus(v):betty(v)});
+      list.push({role:"agent", text: mode==="gus"?gusLocal(v):bettyLocal(v)});
       save(key,list); render();
     };
     render();
