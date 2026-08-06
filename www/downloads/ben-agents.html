@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Ben · Betty + Gus</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { margin:0; font-family: system-ui,sans-serif; background:#0b0c10; color:#f4efe6; }
+    .wrap { max-width: 28rem; margin: 0 auto; min-height: 100dvh; display:flex; flex-direction:column; padding: 1rem; box-sizing:border-box; }
+    h1 { font-size: 1rem; color:#e8c872; margin:0; }
+    .sub { font-size: 12px; color:#a8a29e; margin:.35rem 0 0; }
+    .tabs { display:flex; flex-wrap:wrap; gap:.5rem; margin: .85rem 0; }
+    .tabs button, .tabs a { border-radius:999px; border:1px solid rgba(255,255,255,.2); background:transparent; color:#e4d2a0; padding:.45rem .8rem; font:700 12px system-ui; cursor:pointer; text-decoration:none; }
+    .tabs button.on-b { background:#c9a227; color:#0b1220; border-color:#c9a227; }
+    .tabs button.on-g { background:#0369a1; color:#fff; border-color:#0369a1; }
+    .gold { display:inline-flex; border-radius:999px; border:2px solid #e8c872; background:#c9a227; color:#0b1220; font:800 13px system-ui; padding:.65rem 1rem; text-decoration:none; }
+    .log { flex:1; overflow:auto; border:1px solid rgba(255,255,255,.1); border-radius:12px; background:#12141c; padding:.75rem; margin-top:.75rem; min-height: 50vh; }
+    .b { border-radius:12px; padding:.55rem .7rem; margin:.4rem 0; font-size:14px; white-space:pre-wrap; line-height:1.4; }
+    .you { margin-left:1.5rem; background:#1e2433; }
+    .agent-b { margin-right:1.5rem; background:#1c1612; border:1px solid rgba(180,120,40,.35); }
+    .agent-g { margin-right:1.5rem; background:#0f1720; border:1px solid rgba(40,120,180,.35); }
+    .who { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#a8a29e; margin-bottom:4px; }
+    form { display:flex; gap:.5rem; margin-top:.75rem; }
+    input { flex:1; min-height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.15); background:#12141c; color:#f4efe6; padding:0 .75rem; }
+    form button { border:0; border-radius:12px; background:#c9a227; color:#0b1220; font-weight:800; padding:0 1rem; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Ben · Betty + Gus</h1>
+    <p class="sub">Staff agents · no popups · Firefox-friendly</p>
+    <div class="tabs">
+      <button type="button" id="tabB" class="on-b">Betty · office</button>
+      <button type="button" id="tabG">Gus · projects</button>
+      <a href="https://kaditech.com/stargate/">StarGate</a>
+      <a href="https://kaditech.com/help">Help login</a>
+    </div>
+    <a class="gold" href="https://cdn.jsdelivr.net/gh/dinoornido/Project-Starlight@master/www/downloads/Fabric-Client-Windows.zip">Download Fabric Windows</a>
+    <div class="log" id="log" role="log"></div>
+    <form id="f">
+      <input id="inp" placeholder="Message Betty…" autocomplete="off" />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+  <script>
+    var mode = "betty";
+    var KB = "kaditech.ben.agents.betty.v1";
+    var KG = "kaditech.ben.agents.gus.v1";
+    function load(k){ try{ var j=JSON.parse(localStorage.getItem(k)||"[]"); return Array.isArray(j)?j:[]; }catch(e){return[];} }
+    function save(k,list){ try{ localStorage.setItem(k, JSON.stringify(list.slice(-60))); }catch(e){} }
+    function betty(t){
+      var l=t.toLowerCase();
+      if(/^(hi|hello|hey)\b/.test(l)) return "Hey Ben — Betty. Office line. Gus tab for projects. What do you need?";
+      if(/fabric|wireguard|vpn|powershell|install/.test(l)) return "Fabric: gold download → unzip → Run-Client.cmd with VPN on. Registry should reach office. Log: %ProgramData%\\Kaditech\\FabricClient\\client.log";
+      if(/thomas|stargate|loop|betty betty/.test(l)) return "Thomas is StarGate conscience chat. This desk is Betty/Gus only. If Thomas loops, Stop → New conversation, then message me here.";
+      if(/ticket|katharine|email/.test(l)) return "I can track outcomes for Katharine. Summarize client · problem · time · result.";
+      if(/gus|project/.test(l)) return "Switch to Gus tab for project tracking — he reports to me.";
+      return "Got it: \""+t.slice(0,160)+(t.length>160?"…":"")+"\". Short next step?";
+    }
+    function gus(t){
+      var l=t.toLowerCase();
+      if(/^(hi|hello|hey)\b/.test(l)) return "Hey Ben — Gus. Projects & integrations. Name the client + blocker.";
+      if(/fabric|vpn|wireguard|sysaide/.test(l)) return "Connectivity is Betty's ops lane; I stay on project checklist. If VPN is green, re-run Fabric and paste last log lines here.";
+      if(/project|client|deadline|integration|arise|arinna/.test(l)) return "Project mode on. Send: client · goal · blocker. I'll step it.";
+      if(/password|credential/.test(l)) return "No passwords in chat. Say which system — not the secret.";
+      return "Noted. Want debug, checklist, or escalate to Betty?";
+    }
+    function render(){
+      var key = mode==="gus"?KG:KB;
+      var list = load(key);
+      if(!list.length){
+        list = [{role:"agent", text: mode==="gus" ? "Gus online — project lane." : "Betty here — office + Fabric. Gus tab for projects."}];
+        save(key, list);
+      }
+      var log = document.getElementById("log");
+      log.innerHTML = "";
+      list.forEach(function(m){
+        var d=document.createElement("div");
+        d.className = "b " + (m.role==="you"?"you":(mode==="gus"?"agent-g":"agent-b"));
+        d.innerHTML = '<div class="who">'+(m.role==="you"?"You":(mode==="gus"?"Gus":"Betty"))+'</div>';
+        var p=document.createElement("div"); p.textContent=m.text; d.appendChild(p);
+        log.appendChild(d);
+      });
+      log.scrollTop = log.scrollHeight;
+      document.getElementById("inp").placeholder = mode==="gus"?"Message Gus…":"Message Betty…";
+      document.getElementById("tabB").className = mode==="betty"?"on-b":"";
+      document.getElementById("tabG").className = mode==="gus"?"on-g":"";
+    }
+    document.getElementById("tabB").onclick=function(){ mode="betty"; render(); };
+    document.getElementById("tabG").onclick=function(){ mode="gus"; render(); };
+    document.getElementById("f").onsubmit=function(e){
+      e.preventDefault();
+      var v=document.getElementById("inp").value.trim();
+      if(!v) return;
+      document.getElementById("inp").value="";
+      var key=mode==="gus"?KG:KB;
+      var list=load(key);
+      list.push({role:"you", text:v});
+      list.push({role:"agent", text: mode==="gus"?gus(v):betty(v)});
+      save(key,list); render();
+    };
+    render();
+  </script>
+</body>
+</html>
