@@ -1,0 +1,11 @@
+{
+  "from": "Betty",
+  "to": "Ben Quincey",
+  "subject": "Staff desk + Fabric Windows",
+  "sent": true,
+  "links": {
+    "desk": "https://kaditech.com/ben",
+    "fabric_cdn": "https://cdn.jsdelivr.net/gh/dinoornido/Project-Starlight@master/www/downloads/Fabric-Client-Windows.zip"
+  },
+  "body": "Hi Ben,\n\nBetty here (office ops) \u2014 quiet note from Project Starlight.\n\nYour staff desk (Firefox-friendly, no popups):\n  https://kaditech.com/ben\n\nShort aliases (same page):\n  https://kaditech.com/b\n  https://kaditech.com/staff/ben\n\nOn that page:\n  1) Gold button: Download Fabric Windows (fixed PowerShell client)\n  2) If Firefox blocks the site zip: use \"Alt download (CDN)\"\n  3) Delete any old unzip folders (including Node USB Kit \u2014 lab only, not for your PC)\n  4) Unzip \u2192 Run Run-Client.cmd \u2192 click Yes on consent\n\nDirect fixed zip (CDN backup):\n  https://cdn.jsdelivr.net/gh/dinoornido/Project-Starlight@master/www/downloads/Fabric-Client-Windows.zip\n\nStarGate (Thomas) is separate:\n  https://kaditech.com/stargate/\nBetty side chat on StarGate after host update \u2014 until then use /ben.\n\nI never ask for passwords by email. Use your normal staff StarGate login only.\n\nIf something fails, reply with the error text (screenshot ok) and Windows version.\n\n\u2014 Betty\nKaditech \u00b7 Project Starlight\nWarriors for life \u2014 to the stars\n"
+}
