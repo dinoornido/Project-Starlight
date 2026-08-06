@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fabric downloads · Kaditech Starlight</title>
+  <style>
+    :root { --bg:#0b0b0c; --card:#141416; --gold:#c9a227; --ink:#f4f4f5; --muted:#a1a1aa; --ok:#4ade80; --warn:#fbbf24; --bad:#f87171; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, sans-serif; background:var(--bg); color:var(--ink); line-height:1.5; padding:1.25rem; }
+    a { color: var(--gold); }
+    h1 { font-size:1.5rem; margin:0 0 .35rem; }
+    .sub { color:var(--muted); font-size:.9rem; margin-bottom:1.25rem; }
+    .alert { border:1px solid rgba(251,191,36,.5); background:#1c1610; border-radius:12px; padding:12px 14px; margin:0 0 1rem; }
+    .alert strong { color: var(--warn); }
+    .grid { display:grid; gap:12px; max-width:40rem; }
+    .card { background:var(--card); border:1px solid #2a2a2e; border-radius:14px; padding:14px 16px; }
+    .card.primary { border-color: rgba(201,162,39,.65); box-shadow:0 0 0 1px rgba(201,162,39,.15); }
+    .card h2 { margin:0 0 6px; font-size:1.05rem; }
+    .card p { margin:0 0 10px; color:var(--muted); font-size:.9rem; }
+    .tag { display:inline-block; font-size:.65rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; border-radius:999px; margin-bottom:8px; }
+    .tag.for-ben { background:#14532d; color:var(--ok); }
+    .tag.lab { background:#3f1d0a; color:var(--warn); }
+    .tag.adv { background:#1e1b4b; color:#c4b5fd; }
+    .btn { display:inline-block; background:var(--gold); color:#111; font-weight:700; text-decoration:none; padding:10px 14px; border-radius:999px; font-size:.9rem; }
+    .btn.ghost { background:transparent; border:1px solid #444; color:var(--ink); }
+    .steps { font-size:.85rem; color:var(--muted); margin:10px 0 0; padding-left:1.1rem; }
+    footer { margin-top:1.5rem; font-size:.8rem; color:var(--muted); max-width:40rem; }
+  </style>
+</head>
+<body>
+  <p class="sub"><a href="/">Kaditech</a> · <a href="/stargate">StarGate</a> · Inbox · downloads</p>
+  <h1>Fabric Client Linux · Windows · Adopt Windows</h1>
+  <p class="sub">Project Starlight packages. Pick the right one — wrong package = install fails.</p>
+
+  <div class="alert">
+    <strong>Ben / staff on Windows:</strong> use only
+    <em>Fabric Client Windows</em> below (gold card).  
+    <strong>Do not</strong> run the Node USB Kit on your PC — that is for lab node builders.
+  </div>
+
+  <div class="grid">
+    <div class="card primary">
+      <span class="tag for-ben">For Ben · staff Windows</span>
+      <h2>Fabric Client Windows v1.2+</h2>
+      <p>Field client: consent, inventory, Fabric heartbeat, optional WireGuard. Fixed PowerShell smart-quote crash.</p>
+      <a class="btn" href="Fabric-Client-Windows.zip" id="dl-win">Download Windows client</a>
+      <ol class="steps">
+        <li>Delete any old <code>Fabric-Client-Windows</code> folder</li>
+        <li>Unzip this file</li>
+        <li>Run <code>Run-Client.cmd</code> (admin if possible)</li>
+        <li>Click Yes on consent</li>
+        <li>If LAN needed: place admin <code>wg-client.conf</code> next to the script</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <span class="tag for-ben">Linux staff</span>
+      <h2>Fabric Client Linux</h2>
+      <p>Same field registration for Linux laptops/desktops.</p>
+      <a class="btn ghost" href="Fabric-Client-Linux.zip">Download Linux client</a>
+    </div>
+
+    <div class="card">
+      <span class="tag adv">Advanced · recovery</span>
+      <h2>Fabric Adopt Windows</h2>
+      <p>Deep adoption / recovery host — not the normal daily client. Admin recommended.</p>
+      <a class="btn ghost" href="Fabric-Adopt-Windows.zip">Download Adopt Windows</a>
+    </div>
+
+    <div class="card">
+      <span class="tag lab">Lab only · not for staff PC</span>
+      <h2>Starlight Node USB Kit</h2>
+      <p>Boot / node builder kit. Will not fix StarGate access or staff Fabric VPN. If you downloaded this by mistake, ignore it and use Fabric Client Windows above.</p>
+      <a class="btn ghost" href="Starlight-Node-USB-Kit.zip">Download USB Kit (lab)</a>
+      <p class="steps" style="list-style:none;padding-left:0">Also: <a href="Starlight-Node-USB-Make.sh">Starlight-Node-USB-Make.sh</a></p>
+    </div>
+  </div>
+
+  <footer>
+    <p><strong>Betty:</strong> staff open <a href="/help/betty">Betty chat</a> or the gold Betty popup in StarGate after login.</p>
+    <p>Starlight Node USB Kit · Fabric Client Linux · Windows · Adopt Windows · Inbox · StarGate</p>
+    <p>Warriors for life — to the stars</p>
+  </footer>
+  <script>
+    // Highlight Windows for Windows UAs
+    try {
+      if (/windows/i.test(navigator.userAgent)) {
+        document.getElementById('dl-win')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    } catch (e) {}
+  </script>
+</body>
+</html>
