@@ -53,7 +53,7 @@
     function betty(t){
       var l=t.toLowerCase();
       if(/^(hi|hello|hey)\b/.test(l)) return "Hey Ben — Betty. Office line. Gus tab for projects. What do you need?";
-      if(/fabric|wireguard|vpn|powershell|install/.test(l)) return "Fabric: gold download → unzip → Run-Client.cmd with VPN on. Registry should reach office. Log: %ProgramData%\\Kaditech\\FabricClient\\client.log";
+      if(/powershell|popup|pop up|flash|closing|instant/.test(l) && /window|powershell|fabric|keep/.test(l)) return "Not a failed install — Fabric heartbeat was flashing PowerShell. Fix: download Fabric v1.5 → run Fix-Silent-Heartbeat.cmd once (hidden VBS, no popups). Optional: disable task KaditechFabricHeartbeat.";\n      if(/fabric|wireguard|vpn|install/.test(l) && !/popup|flash|closing/.test(l)) return "Fabric: gold download → unzip → Run-Client.cmd with VPN on. If PowerShell windows flash after install, run Fix-Silent-Heartbeat.cmd from the same zip. Log: %ProgramData%\\Kaditech\\FabricClient\\client.log";
       if(/thomas|stargate|loop|betty betty/.test(l)) return "Thomas is StarGate conscience chat. This desk is Betty/Gus only. If Thomas loops, Stop → New conversation, then message me here.";
       if(/ticket|katharine|email/.test(l)) return "I can track outcomes for Katharine. Summarize client · problem · time · result.";
       if(/gus|project/.test(l)) return "Switch to Gus tab for project tracking — he reports to me.";
@@ -71,7 +71,7 @@
       var key = mode==="gus"?KG:KB;
       var list = load(key);
       if(!list.length){
-        list = [{role:"agent", text: mode==="gus" ? "Gus online — project lane." : "Betty here — office + Fabric. Gus tab for projects."}];
+        list = [{role:"agent", text: mode==="gus" ? "Gus online — project lane." : "Betty-led week (R2 leading through Aug 13). Ops here first: intake→triage→execute→verify→report. Gus = projects. Thomas only if servers down."}];
         save(key, list);
       }
       var log = document.getElementById("log");
