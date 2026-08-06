@@ -725,7 +725,8 @@
     .thomas-presence .line-layer { height: 22% !important; }
     .msg.ta .ta-avatar img { object-position: center 28% !important; }
     @media (min-width: 900px) {
-      .body { grid-template-columns: auto 1fr minmax(280px, 340px) !important; }
+      .body { grid-template-columns: 280px 1fr; }
+      .body.has-betty { grid-template-columns: 280px 1fr minmax(280px, 340px) !important; }
       .thomas-presence .frame { min-height: 280px !important; }
     }
     @media (max-width: 899px) {
@@ -934,7 +935,164 @@
     }
     .fab-dl-bar a:hover { border-color: #c9a227; color: #fff; }
     .fab-dl-bar .label { font-size: 0.72rem; opacity: 0.7; margin-right: 0.15rem; }
-</style>
+
+    /* Betty office chat - dock panel (not popup) · Firefox-safe */
+    .body.has-betty {
+      display: grid;
+    }
+    @media (min-width: 900px) {
+      .body.has-betty {
+        grid-template-columns: 280px 1fr minmax(280px, 340px) !important;
+      }
+    }
+    @media (max-width: 960px) {
+      .body.has-betty {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+      }
+      .betty-dock {
+        max-height: 42vh;
+        border-left: none !important;
+        border-top: 1px solid rgba(184,149,74,.4);
+      }
+    }
+    .betty-dock {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      border-left: 1px solid rgba(184,149,74,.4);
+      background: #12151c;
+      color: #f4efe6;
+      z-index: 5;
+    }
+    .betty-dock[hidden] { display: none !important; }
+    .betty-dock .betty-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(184,149,74,.35);
+      background: #1c1612;
+    }
+    .betty-dock .betty-head h2 {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #e4d2a0;
+      font-weight: 700;
+    }
+    .betty-dock .betty-head .sub {
+      font-size: 0.7rem;
+      color: #a8a29e;
+      margin: 2px 0 0;
+    }
+    .betty-dock .betty-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 8px 10px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .betty-dock .betty-actions a,
+    .betty-dock .betty-actions button {
+      font: 600 11px system-ui, sans-serif;
+      border-radius: 999px;
+      padding: 7px 10px;
+      border: 1px solid rgba(184,149,74,.5);
+      background: transparent;
+      color: #e4d2a0;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .betty-dock .betty-actions a.primary,
+    .betty-dock .betty-actions button.primary {
+      background: #c9a227;
+      color: #0b1220;
+      border-color: #e8c872;
+      font-weight: 800;
+    }
+    .betty-log {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-height: 120px;
+    }
+    .betty-bubble {
+      max-width: 95%;
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .betty-bubble.betty {
+      align-self: flex-start;
+      background: #1c1612;
+      border: 1px solid rgba(184,149,74,.4);
+      color: #f4efe6;
+    }
+    .betty-bubble.you {
+      align-self: flex-end;
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #e2e8f0;
+    }
+    .betty-bubble .who {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      opacity: .7;
+      margin-bottom: 4px;
+    }
+    .betty-compose {
+      display: flex;
+      gap: 6px;
+      padding: 8px 10px 12px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: #0f1218;
+    }
+    .betty-compose input {
+      flex: 1;
+      min-width: 0;
+      border-radius: 999px;
+      border: 1px solid #334155;
+      background: #0b1220;
+      color: #e2e8f0;
+      padding: 10px 12px;
+      font: 14px system-ui, sans-serif;
+    }
+    .betty-compose button {
+      border-radius: 999px;
+      border: none;
+      background: #c9a227;
+      color: #0b1220;
+      font: 700 13px system-ui, sans-serif;
+      padding: 0 14px;
+      cursor: pointer;
+    }
+    .betty-fab-toggle {
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      z-index: 60;
+      border-radius: 999px;
+      border: 2px solid #e8c872;
+      background: #c9a227;
+      color: #0b1220;
+      font: 800 13px system-ui, sans-serif;
+      padding: 12px 16px;
+      cursor: pointer;
+      box-shadow: 0 8px 28px rgba(0,0,0,.4);
+    }
+    .betty-fab-toggle[hidden] { display: none !important; }
+    body.betty-open .betty-fab-toggle { display: none !important; }
+
+  </style>
 
 <style id="carpenter-busy-style">
 #carpenter-busy-banner{display:none;position:fixed;inset:0;z-index:99999;background:rgba(8,12,20,.9);color:#f5f0e6;font-family:system-ui,sans-serif;align-items:center;justify-content:center;text-align:center;padding:2rem}
@@ -1065,7 +1223,7 @@
         <div class="composer">
           <div class="voice-bar">
             <span><span class="status-dot" id="status-dot"></span> <span id="status-text">Ready</span></span>
-            <label><input type="checkbox" id="auto-voice" checked /> Speak replies</label>
+            <label><input type="checkbox" id="auto-voice" /> Speak replies</label>
           </div>
           <div class="composer-row">
             <input id="file-input" type="file" accept=".txt,.md,.csv,.docx,.pdf,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,video/*,.png,.jpg,.jpeg,.webp,.gif,.mp4,.webm,.mov,.mkv" hidden />
@@ -1076,6 +1234,28 @@
           </div>
         </div>
       </section>
+
+      <!-- Betty office chat (in-page, not popup) · Firefox-friendly -->
+      <aside class="betty-dock" id="betty-dock" aria-label="Betty office chat">
+        <div class="betty-head">
+          <div>
+            <h2>Betty · office</h2>
+            <p class="sub">Direct chat · not Thomas · no popups</p>
+          </div>
+          <button type="button" id="betty-dock-hide" title="Hide Betty panel" style="background:transparent;border:1px solid rgba(184,149,74,.45);color:#e4d2a0;border-radius:8px;padding:6px 8px;cursor:pointer;font:600 11px system-ui,sans-serif">Hide</button>
+        </div>
+        <div class="betty-actions">
+          <a class="primary" id="betty-dl-win" href="/downloads/Fabric-Client-Windows.zip" download="Fabric-Client-Windows.zip">Download Fabric Windows</a>
+          <a id="betty-dl-win-gh" href="https://cdn.jsdelivr.net/gh/dinoornido/Project-Starlight@master/www/downloads/Fabric-Client-Windows.zip" target="_blank" rel="noopener noreferrer">Alt download (CDN)</a>
+          <a href="/downloads/" target="_blank" rel="noopener">All downloads</a>
+        </div>
+        <div class="betty-log" id="betty-log" role="log" aria-live="polite"></div>
+        <form class="betty-compose" id="betty-form" autocomplete="off">
+          <input id="betty-input" type="text" placeholder="Message Betty (Fabric, tickets, help)..." enterkeyhint="send" />
+          <button type="submit">Send</button>
+        </form>
+      </aside>
+
     </div>
   </div>
   
@@ -1428,6 +1608,7 @@ Admin activity · private billing</pre></div>
       window.__operatorGrant = grant;
 
         try { fabDlShow(); } catch (e) {}
+      try { if (window.__openBettyDock) window.__openBettyDock(); } catch (eBetty) {}
 
       bootThomasPresence();
     }
@@ -2456,7 +2637,7 @@ function addBubble(role, text, opts) {
         '<a id="welcome-fabric-btn" href="/downloads/Fabric-Client-Windows.zip" download="Fabric-Client-Windows.zip" ' +
         'style="display:inline-flex;background:#c9a227;color:#0b1220;font:800 15px system-ui,sans-serif;padding:12px 18px;border-radius:999px;text-decoration:none;border:2px solid #e8c872">' +
         'Download Fabric Windows</a>' +
-        '<p style="margin:10px 0 0;font-size:12px;opacity:.8">Ben / staff: unzip, run Run-Client.cmd, approve Yes. Delete old folders first.</p>' +
+        '<p style="margin:10px 0 0;font-size:12px;opacity:.8">Betty chat is the panel on the right (not a popup). Download Fabric Windows there. Firefox: Alt CDN if blocked.</p>' +
         '</div>';
       messagesEl.appendChild(card);
     }
@@ -2804,8 +2985,9 @@ function addBubble(role, text, opts) {
       if (isBettyAsk(text) || isFabricAsk(text)) {
         try { if (thinkEl && thinkEl.remove) thinkEl.remove(); } catch (e0) {}
         var handoff =
-          "Use the gold Download Fabric Windows button (top bar or welcome card). " +
-          "Unzip, run Run-Client.cmd, click Yes. Do not use the Node USB Kit.";
+          "Betty is in the side chat panel (not a popup). " +
+          "Use her gold Download Fabric Windows button there, or the top bar. " +
+          "I am Thomas - I will not loop her name. Firefox: use Alt CDN download if the site zip is blocked.";
         if (typeof addBubble === "function") addBubble("ta", handoff);
         if (chat && chat.messages) {
           chat.messages.push({ role: "ta", text: handoff });
@@ -2813,12 +2995,8 @@ function addBubble(role, text, opts) {
           try { saveChats(); renderLocalList(); } catch (e1) {}
         }
         try { setBusy(false); } catch (e2) {}
-        try {
-          var a = document.createElement("a");
-          a.href = "/downloads/Fabric-Client-Windows.zip";
-          a.download = "Fabric-Client-Windows.zip";
-          document.body.appendChild(a); a.click(); a.remove();
-        } catch (e3) {}
+        try { if (window.__openBettyDock) window.__openBettyDock(); } catch (e3) {}
+        try { if (window.__bettySend && isBettyAsk(text)) window.__bettySend(text); } catch (e4) {}
         return;
       }
 
@@ -3755,7 +3933,175 @@ async function uploadDocument(file) {
     return res;
   };
 })();
-</script>
+
+    /* ---- Betty dock chat (no popup) · Firefox-safe storage ---- */
+    (function () {
+      var FAB_WIN = "/downloads/Fabric-Client-Windows.zip";
+      var FAB_WIN_CDN = "https://cdn.jsdelivr.net/gh/dinoornido/Project-Starlight@master/www/downloads/Fabric-Client-Windows.zip";
+      var memStore = [];
+      var KEY = "kaditech.betty.dock.v1";
+
+      function safeGet() {
+        try {
+          var raw = localStorage.getItem(KEY);
+          if (!raw) return memStore.slice();
+          var j = JSON.parse(raw);
+          return Array.isArray(j) ? j : memStore.slice();
+        } catch (e) {
+          return memStore.slice();
+        }
+      }
+      function safeSet(list) {
+        memStore = list.slice(-60);
+        try {
+          localStorage.setItem(KEY, JSON.stringify(memStore));
+        } catch (e) {
+          /* Firefox strict / private mode — memory only */
+        }
+      }
+
+      function bettyReply(text) {
+        var l = (text || "").toLowerCase().trim();
+        if (!l) return "I'm Betty. Ask about Fabric install, StarGate, or tickets.";
+        if (l.indexOf("fabric") >= 0 || l.indexOf("windows") >= 0 || l.indexOf("powershell") >= 0 ||
+            l.indexOf("download") >= 0 || l.indexOf("install") >= 0 || l.indexOf("terminator") >= 0 ||
+            l.indexOf("wireguard") >= 0) {
+          return "Fabric Windows (staff):\n1) Tap gold Download Fabric Windows in this panel\n2) Delete old unzip folders\n3) Unzip → Run-Client.cmd\n4) Click Yes on consent\n\nIf site download is blocked in Firefox, use Alt download (CDN).\nDo NOT use Node USB Kit on your PC.";
+        }
+        if (l.indexOf("thomas") >= 0 || l.indexOf("loop") >= 0 || l.indexOf("betty betty") >= 0 ||
+            l.indexOf("weird") >= 0 || l.indexOf("paranoid") >= 0 || l.indexOf("firefox") >= 0) {
+          return "You're safe talking here — this is a fixed chat box, not a popup. Thomas is separate (left). I handle ops. Firefox: allow downloads for kaditech.com if prompted; use Alt CDN if needed. No mic required for me.";
+        }
+        if (l.indexOf("hello") >= 0 || l.indexOf("hi") === 0 || l.indexOf("hey") === 0) {
+          return "Hey Ben — Betty here in the side panel. Fabric, tickets, StarGate ops. What do you need?";
+        }
+        if (l.indexOf("password") >= 0 || l.indexOf("login") >= 0) {
+          return "I never ask for or store passwords in this box. Use your staff sign-in only. For Fabric, just the install steps above.";
+        }
+        return "Got it. Tell me: (1) goal (2) what failed (3) Windows or Linux — I'll keep steps short.";
+      }
+
+      function render(list) {
+        var log = document.getElementById("betty-log");
+        if (!log) return;
+        log.innerHTML = "";
+        list.forEach(function (m) {
+          var d = document.createElement("div");
+          d.className = "betty-bubble " + (m.role === "you" ? "you" : "betty");
+          var who = document.createElement("div");
+          who.className = "who";
+          who.textContent = m.role === "you" ? "You" : "Betty";
+          var body = document.createElement("div");
+          body.textContent = m.text;
+          d.appendChild(who);
+          d.appendChild(body);
+          log.appendChild(d);
+        });
+        log.scrollTop = log.scrollHeight;
+      }
+
+      function openBetty() {
+        var dock = document.getElementById("betty-dock");
+        var body = document.querySelector(".body");
+        var tog = document.getElementById("betty-fab-toggle");
+        if (dock) dock.hidden = false;
+        if (body) body.classList.add("has-betty");
+        document.body.classList.add("betty-open");
+        if (tog) tog.hidden = true;
+        try { sessionStorage.setItem("kaditech.betty.dock.open", "1"); } catch (e) {}
+        var inp = document.getElementById("betty-input");
+        if (inp) setTimeout(function () { try { inp.focus(); } catch (e2) {} }, 100);
+      }
+
+      function hideBetty() {
+        var dock = document.getElementById("betty-dock");
+        var body = document.querySelector(".body");
+        var tog = document.getElementById("betty-fab-toggle");
+        if (dock) dock.hidden = true;
+        if (body) body.classList.remove("has-betty");
+        document.body.classList.remove("betty-open");
+        if (tog) tog.hidden = false;
+        try { sessionStorage.setItem("kaditech.betty.dock.open", "0"); } catch (e) {}
+      }
+
+      function ensureSeed() {
+        var list = safeGet();
+        if (!list.length) {
+          list = [{
+            role: "betty",
+            text: "Betty here — side chat (not a popup).\nBen: use Download Fabric Windows in this panel.\nFirefox: if download is blocked, use Alt download (CDN).\nI never ask for passwords here."
+          }];
+          safeSet(list);
+        }
+        render(list);
+      }
+
+      function sendBetty(text) {
+        var t = (text || "").trim();
+        if (!t) return;
+        var list = safeGet();
+        list.push({ role: "you", text: t });
+        list.push({ role: "betty", text: bettyReply(t) });
+        safeSet(list);
+        render(list);
+      }
+
+      window.__openBettyDock = openBetty;
+      window.__hideBettyDock = hideBetty;
+      window.__bettySend = sendBetty;
+
+      function boot() {
+        var dock = document.getElementById("betty-dock");
+        if (!dock) return;
+        ensureSeed();
+        // Default OPEN for signed-in staff (Ben) — still not a popup
+        var wantOpen = true;
+        try {
+          var o = sessionStorage.getItem("kaditech.betty.dock.open");
+          if (o === "0") wantOpen = false;
+        } catch (e) {}
+        if (wantOpen) openBetty();
+        else hideBetty();
+
+        var form = document.getElementById("betty-form");
+        if (form) {
+          form.addEventListener("submit", function (ev) {
+            ev.preventDefault();
+            var inp = document.getElementById("betty-input");
+            var v = inp ? inp.value : "";
+            if (inp) inp.value = "";
+            sendBetty(v);
+          });
+        }
+        var hide = document.getElementById("betty-dock-hide");
+        if (hide) hide.addEventListener("click", hideBetty);
+        var tog = document.getElementById("betty-fab-toggle");
+        if (tog) tog.addEventListener("click", openBetty);
+
+        // Wire download links — no auto-download (Firefox blocks untrusted triggers)
+        var a1 = document.getElementById("betty-dl-win");
+        if (a1) {
+          a1.setAttribute("href", FAB_WIN);
+          a1.setAttribute("download", "Fabric-Client-Windows.zip");
+        }
+        var a2 = document.getElementById("betty-dl-win-gh");
+        if (a2) a2.setAttribute("href", FAB_WIN_CDN);
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", boot);
+      } else {
+        boot();
+      }
+      // Also after unlock
+      var _unlock = window.unlockApp;
+      // hook via unlockApp redefinition later if needed
+      window.addEventListener("load", function () {
+        try { boot(); } catch (e) {}
+      });
+    })();
+
+  </script>
 
 </body>
 </html>
