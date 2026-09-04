@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Access · Staff · Kaditech</title>
+  <style>
+    body{margin:0;min-height:100vh;font-family:system-ui,sans-serif;background:#0b0c10;color:#e8e4db;
+      display:flex;align-items:center;justify-content:center;padding:24px}
+    .card{width:min(420px,100%);border:1px solid rgba(201,162,39,.4);border-radius:20px;
+      background:#14161c;padding:28px 24px}
+    h1{margin:0 0 6px;font-size:1.25rem;color:#e8c872}
+    p{margin:0 0 18px;color:#a8a29e;font-size:.92rem;line-height:1.45}
+    label{display:block;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#a8a29e;margin:10px 0 4px}
+    input{width:100%;box-sizing:border-box;padding:12px 14px;border-radius:12px;border:1px solid #334155;
+      background:#0b1220;color:#eee;font-size:1rem}
+    button{width:100%;margin-top:16px;padding:12px;border:0;border-radius:999px;background:#c9a227;
+      color:#0b1220;font-weight:800;cursor:pointer}
+    .row{display:flex;gap:10px;margin-top:14px}
+    a{color:#e8c872;text-decoration:none;font-size:.85rem}
+    .err{color:#fca5a5;font-size:.85rem;min-height:1.2em;margin-top:8px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Staff access</h1>
+    <p>This door is for Kaditech staff. Clients use Help.</p>
+    <form id="f">
+      <label for="u">Username</label>
+      <input id="u" name="user" autocomplete="username" required />
+      <label for="p">Password</label>
+      <input id="p" name="pass" type="password" autocomplete="current-password" required />
+      <div class="err" id="e"></div>
+      <button type="submit">Enter StarGate</button>
+    </form>
+    <div class="row">
+      <a href="/assets/help.html">Client Help →</a>
+      <a href="/">Kaditech home</a>
+    </div>
+  </div>
+  <script>
+  var STAFF = {dino:1,katharine:1,ben:1,brendon:1,brandon:1,tech:1};
+  document.getElementById('f').onsubmit = function(ev){
+    ev.preventDefault();
+    var u = (document.getElementById('u').value||'').trim().toLowerCase();
+    var p = document.getElementById('p').value||'';
+    var e = document.getElementById('e');
+    if (!STAFF[u]) { e.textContent = 'Staff login only. Clients use Help.'; return; }
+    if (!p) { e.textContent = 'Password required.'; return; }
+    try {
+      sessionStorage.setItem('sg_user', u);
+      sessionStorage.setItem('sg_role', u==='dino'?'architect':(u==='katharine'?'admin':'tech'));
+    } catch (err) {}
+    location.href = '/assets/stargate.html';
+  };
+  </script>
+</body>
+</html>
